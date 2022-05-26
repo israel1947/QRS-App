@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+
+
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +10,10 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private barcodeScanner: BarcodeScanner) {}
 
+
+  onClickScan(){
+
+  }
 }
