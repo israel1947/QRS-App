@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+import { DataScanService } from 'src/app/services/data-scan.service';
 
 
 
@@ -10,7 +11,9 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 })
 export class Tab1Page {
 
-  constructor(private barcodeScanner: BarcodeScanner) {}
+  constructor(private barcodeScanner: BarcodeScanner,
+              private dataScan:DataScanService
+  ) {}
 
   ionViewWillEnter(){
     this.onClickScan();
@@ -18,8 +21,11 @@ export class Tab1Page {
 
   onClickScan(){
     this.barcodeScanner.scan().then(barcodeData => {
-      console.log('Barcode data', barcodeData);
+      if(!barcodeData.cancelled){
+        this.dataScan.keepRecords(barcodeData.format,barcodeData.text);
+      }
      }).catch(err => {
+      this.dataScan.keepRecords('Qr format','https://www.instagram.com/israel_1947/');
          console.log('Error', err);
      });
   }
