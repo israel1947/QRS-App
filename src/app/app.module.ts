@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 
 
 //plugins
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
   entryComponents: [],
   imports: [
     BrowserModule, 
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(), 
     AppRoutingModule,
   ],

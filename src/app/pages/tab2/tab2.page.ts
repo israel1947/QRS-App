@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataScanService } from '../../services/data-scan.service';
 
 @Component({
@@ -8,9 +8,8 @@ import { DataScanService } from '../../services/data-scan.service';
 })
 export class Tab2Page {
 
-  constructor( public dataScan:DataScanService) {}
-
-
+  constructor( public dataScan:DataScanService, ) {}
+  
   onSendEmail(){
     console.log("sending email....");
   }
