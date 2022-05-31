@@ -12,8 +12,15 @@ export class Tab1Page {
 
   constructor(private barcodeScanner: BarcodeScanner) {}
 
+  ionViewWillEnter(){
+    this.onClickScan();
+  }
 
   onClickScan(){
-
+    this.barcodeScanner.scan().then(barcodeData => {
+      console.log('Barcode data', barcodeData);
+     }).catch(err => {
+         console.log('Error', err);
+     });
   }
 }
