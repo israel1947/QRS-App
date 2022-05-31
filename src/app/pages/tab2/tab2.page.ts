@@ -18,4 +18,8 @@ export class Tab2Page {
     console.log("registro", registers);
     
   }
+
+  onDelete(){
+    this.dataScan.delete();
+  }
 }
