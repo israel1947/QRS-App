@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Register } from '../models/registro';
 import { Storage } from '@ionic/storage-angular';
 import { NavController } from '@ionic/angular';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class DataScanService {
   savedRecords:Register[]=[];
   
   constructor(private storage: Storage,
-              private nvCtrl:NavController
+              private nvCtrl:NavController,
+              private iab: InAppBrowser,
   ) {this.loadHistorial();}
 
   async keepRecords(format:string, text:string){
@@ -20,6 +22,7 @@ export class DataScanService {
 
     const newRegister = new Register(format,text);
     this.savedRecords.unshift(newRegister);//save sacan for order
+    this.openRegister(newRegister);
 
     this.storage.set('registros', this.savedRecords);
   }
@@ -36,6 +39,19 @@ export class DataScanService {
 
   openRegister(register:Register){
     this.nvCtrl.navigateForward('/tabs/tab2');
+
+    switch(register.type){
+      case 'http':
+        this.onOpenHistorial
+        break;
+    }
+  }
+
+  onOpenHistorial(registers:Register){
+      const  browser = this.iab.create(registers.text)
+      browser.show;
+      return;
+    
   }
 
   
