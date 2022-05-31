@@ -15,7 +15,7 @@ export class Register{
 
     private determineType(){
       const startText = this.text.substring(0,4);
-      console.log('Type: '+startText);
+      console.log('Type: '+ startText);
 
       switch (startText) {
         case 'http':

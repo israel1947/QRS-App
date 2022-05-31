@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataScanService } from '../../services/data-scan.service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor( public dataScan:DataScanService) {}
 
+
+  onSendEmail(){
+    console.log("sending email....");
+  }
+
+  onOpenHistorial(registers){
+    console.log("registro", registers);
+    
+  }
 }
