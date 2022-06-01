@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Register } from '../models/registro';
 import { Storage } from '@ionic/storage-angular';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 
@@ -15,6 +15,7 @@ export class DataScanService {
   constructor(private storage: Storage,
               private nvCtrl:NavController,
               private iab: InAppBrowser,
+              public toastController: ToastController,
   ) {this.loadHistorial();}
 
 
@@ -36,8 +37,26 @@ export class DataScanService {
   }
 
   async delete(){
-     await this.storage.clear();
-     this.nvCtrl.navigateForward('/tabs/tab1');
+      const toast = await this.toastController.create({
+        message: 'Do you want to delete the history',
+        color:'primary',
+        position:'middle',
+        buttons: [
+          {
+            icon: 'trash-outline',
+            text: 'Acept',
+              handler: () => {
+              this.storage.clear();
+              this.nvCtrl.navigateForward('/tabs/tab1');
+            }
+          }, 
+          {
+            text: 'Cancel',
+            role: 'cancel',
+          }
+        ]
+      });
+      await toast.present();
   }
 
   openRegister(register:Register){
