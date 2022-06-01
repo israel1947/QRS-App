@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage-angular';
 import { NavController } from '@ionic/angular';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +16,7 @@ export class DataScanService {
               private nvCtrl:NavController,
               private iab: InAppBrowser,
   ) {this.loadHistorial();}
+
 
   async keepRecords(format:string, text:string){
 
@@ -34,7 +36,8 @@ export class DataScanService {
   }
 
   async delete(){
-    await this.storage.clear();
+     await this.storage.clear();
+     this.nvCtrl.navigateForward('/tabs/tab1');
   }
 
   openRegister(register:Register){
@@ -42,7 +45,7 @@ export class DataScanService {
 
     switch(register.type){
       case 'http':
-        this.onOpenHistorial
+        this.onOpenHistorial(register);
         break;
     }
   }
