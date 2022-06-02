@@ -25,7 +25,8 @@ export class Tab1Page {
         this.dataScan.keepRecords(barcodeData.format,barcodeData.text);
       }
      }).catch(err => {
-      this.dataScan.keepRecords('Qr format','https://www.instagram.com/israel_1947/');
+        //this.dataScan.keepRecords('Qr format','https://www.instagram.com/israel_1947/');
+        this.dataScan.keepRecords('Qr format','geo:40.73151796986687,-74.06087294062502');
          console.log('Error', err);
      });
   }

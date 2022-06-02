@@ -26,6 +26,7 @@ export class DataScanService {
     const newRegister = new Register(format,text);
     this.savedRecords.unshift(newRegister);//save sacan for order
     this.openRegister(newRegister);
+    
 
     this.storage.set('registros', this.savedRecords);
   }
@@ -66,11 +67,14 @@ export class DataScanService {
       case 'http':
         this.onOpenHistorial(register);
         break;
+      case 'geo:':
+        this.nvCtrl.navigateForward(`/tabs/tab2/map/${register.text}`)
+        break;
     }
   }
 
   onOpenHistorial(registers:Register){
-      const  browser = this.iab.create(registers.text)
+      const  browser = this.iab.create(registers.text,'_system')
       browser.show;
       return;
     

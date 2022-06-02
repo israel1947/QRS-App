@@ -23,8 +23,8 @@ export class Register{
           this.icon = 'globe';
           break;
         case 'geo:':
-          this.text = 'geo';
-          this.icon = 'pin';
+          this.type = 'geo:';
+          this.icon = 'location';
           break;
       
         default:

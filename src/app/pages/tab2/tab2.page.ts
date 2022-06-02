@@ -23,12 +23,14 @@ export class Tab2Page {
   }
 
   onOpenHistorial(registers:Register){
-    if (this.platform.is('android') || this.platform.is('ios')) {
+   /*  if (this.platform.is('android') || this.platform.is('ios')) {
       const  browser = this.iab.create(registers.text)
       browser.show;
       return;
     }
-    window.open(registers.text,'_blank')
+    window.open(registers.text,'_blank'); */
+    this.dataScan.openRegister(registers)
+    
     
   }
 
