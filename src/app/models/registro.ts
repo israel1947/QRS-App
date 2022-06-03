@@ -26,6 +26,10 @@ export class Register{
           this.type = 'geo:';
           this.icon = 'location';
           break;
+        case 'WIFI':
+          this.type = 'WIFI';
+          this.icon = 'wifi';
+          break;
       
         default:
           this.type = 'Unrecognized';

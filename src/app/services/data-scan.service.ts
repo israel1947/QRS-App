@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Register } from '../models/registro';
 import { Storage } from '@ionic/storage-angular';
-import { NavController, ToastController } from '@ionic/angular';
+import { ModalController, NavController, ToastController } from '@ionic/angular';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { ModalComponent } from '../components/modal/modal.component';
 
 
 @Injectable({
@@ -16,6 +17,7 @@ export class DataScanService {
               private nvCtrl:NavController,
               private iab: InAppBrowser,
               public toastController: ToastController,
+              private modalCtrl: ModalController
   ) {this.loadHistorial();}
 
 
@@ -39,12 +41,9 @@ export class DataScanService {
 
   async delete(){
       const toast = await this.toastController.create({
-        message: 'Do you want to delete the history',
-        color:'primary',
-        position:'middle',
+        message: 'Do you want to delete the history ?',
         buttons: [
           {
-            icon: 'trash-outline',
             text: 'Acept',
               handler: () => {
               this.storage.clear();
@@ -70,6 +69,9 @@ export class DataScanService {
       case 'geo:':
         this.nvCtrl.navigateForward(`/tabs/tab2/map/${register.text}`)
         break;
+      case 'WIFI':
+        this.onOpenTypeWifi(register);
+        break;
     }
   }
 
@@ -77,6 +79,19 @@ export class DataScanService {
       const  browser = this.iab.create(registers.text,'_system')
       browser.show;
       return;
+  }
+
+  async onOpenTypeWifi(registers:Register){
+    const {text} = registers
+    const modal = await this.modalCtrl.create({
+      component:ModalComponent,
+      showBackdrop: false,
+      componentProps:{
+        text
+      }
+    })
+    modal.present();
+    console.log(text);
     
   }
 

@@ -1,0 +1,33 @@
+<ion-toolbar>
+  <ion-buttons  class="close" (click)="onModalClose()" >
+    <ion-icon name="close-circle-outline"></ion-icon>
+ </ion-buttons>
+</ion-toolbar>
+<ion-content>
+     <ion-grid fixed>
+       <ion-row>
+         <ion-col >
+           <ion-img class="ion-margin-top" [src]="image"></ion-img>
+         </ion-col>
+       </ion-row>
+     </ion-grid>
+     <ion-grid fixed>
+       <ion-row>
+         <ion-col >
+          <ion-list>
+            <ion-item *ngFor="let item of dataScan.savedRecords">
+              <ion-label class="ion-text-center">
+                <h1>This is your password</h1>
+              <ion-text color="primary">
+                <h2 #userinput>{{item.text}}</h2>
+              </ion-text>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-button  color="primary" expand="block" shape="round"  >
+          <ion-icon name="copy-outline" ></ion-icon>
+        </ion-button>
+      </ion-col>
+       </ion-row>
+     </ion-grid>
+</ion-content>

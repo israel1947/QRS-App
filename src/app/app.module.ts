@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
     IonicModule.forRoot(), 
     AppRoutingModule,
     IonicStorageModule.forRoot(),
+    ComponentsModule
     
   ],
   providers: [

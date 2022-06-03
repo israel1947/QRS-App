@@ -26,7 +26,8 @@ export class Tab1Page {
       }
      }).catch(err => {
         //this.dataScan.keepRecords('Qr format','https://www.instagram.com/israel_1947/');
-        this.dataScan.keepRecords('Qr format','geo:40.73151796986687,-74.06087294062502');
+        //this.dataScan.keepRecords('Qr format','geo:40.73151796986687,-74.06087294062502');
+        this.dataScan.keepRecords('Qr format','WIFI:SFSFS4212121SSC');
          console.log('Error', err);
      });
   }
