@@ -13,15 +13,9 @@ export class Tab2Page {
 
   historial:Register[]=[];
 
-  constructor( public dataScan:DataScanService, 
-               private iab: InAppBrowser,
-               private platform: Platform,
+  constructor( public dataScan:DataScanService,
   ) {}
   
-  onSendEmail(){
-    console.log("sending email....");
-  }
-
   onOpenHistorial(registers:Register){
    /*  if (this.platform.is('android') || this.platform.is('ios')) {
       const  browser = this.iab.create(registers.text)
@@ -29,9 +23,7 @@ export class Tab2Page {
       return;
     }
     window.open(registers.text,'_blank'); */
-    this.dataScan.openRegister(registers)
-    
-    
+    this.dataScan.openRegister(registers);
   }
 
   onDelete(){

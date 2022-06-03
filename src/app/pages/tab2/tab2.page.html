@@ -3,14 +3,13 @@
     <ion-title>
       Historial
     </ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="onSendEmail()" color="secondary">
-        <ion-icon name="send" slot="icon-only"></ion-icon>
+    <ion-buttons slot="end" >
+      <ion-button (click)="onDelete()">
+        <ion-icon slot="start" name="trash-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item detail *ngFor="let registers of dataScan.savedRecords" (click)="onOpenHistorial(registers)">
@@ -25,9 +24,4 @@
       </label>
     </ion-item>
   </ion-list>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="onDelete()">
-    <ion-fab-button>
-      <ion-icon name="trash-outline" only-icon></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>
