@@ -13,6 +13,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { ComponentsModule } from './components/components.module';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ComponentsModule } from './components/components.module';
     IonicModule.forRoot(), 
     AppRoutingModule,
     IonicStorageModule.forRoot(),
-    ComponentsModule
+    ComponentsModule,
+    ClipboardModule
     
   ],
   providers: [

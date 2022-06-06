@@ -11,7 +11,7 @@
          </ion-col>
        </ion-row>
      </ion-grid>
-     <ion-grid fixed>
+     <ion-grid fixed class="ion-padding">
        <ion-row>
          <ion-col >
           <ion-list>
@@ -19,14 +19,26 @@
               <ion-label class="ion-text-center">
                 <h1>This is your password</h1>
               <ion-text color="primary">
-                <h2 #userinput>{{item.text}}</h2>
+                <ion-input type="text"
+                           [(ngModel)]="text" 
+                           readonly
+                           [value]="item.text">
+                           Password:
+                </ion-input>
               </ion-text>
             </ion-label>
           </ion-item>
         </ion-list>
-        <ion-button  color="primary" expand="block" shape="round"  >
-          <ion-icon name="copy-outline" ></ion-icon>
-        </ion-button>
+         <ion-button ngxClipboard
+                     [cbContent]="text"
+                     (cbOnError)="onCopyFailure()"
+                     (cbOnSuccess)="isCopied1 = true"
+                     [color]="color" 
+                     expand="block"
+                     shape="round"  >
+                     {{message}}
+          <ion-icon [name]="icon" slot="end"></ion-icon>
+        </ion-button> 
       </ion-col>
        </ion-row>
      </ion-grid>
